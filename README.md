@@ -28,7 +28,7 @@ be passed through the chosen_options attribute as shown above.
 
 ### Events
 *important*
-The ```change``` event that Chosen fires on select was throwing an error in Volt 0.9.6 when it caught somewhere higher up the stack. I didn't have time to fully chase it down, so instead this gem currently catches ```change``` and raises ```chosen:change```. Thus, you must use ```chosen-change``` if you want to do something with the change event.
+The ```change``` event that Chosen fires on select was throwing an error in Volt 0.9.6 when it caught somewhere higher up the stack. I didn't have time to fully chase it down, so instead this gem currently catches ```change``` and raises ```chosen:change```. Thus, you must use ```chosen:change``` if you want to do something with the change event.
 
 ## Credit
 Thanks to all the folks who contribute to [Chosen](https://github.com/harvesthq/chosen), it's amazing!
