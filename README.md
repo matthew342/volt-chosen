@@ -44,4 +44,4 @@ Thanks to all the folks who contribute to [Chosen](https://github.com/harvesthq/
 ## List of needs:
 1. Some integration tests for multiple selects
 2. Test and tweak to make sure single selects work
-3. Would be nice to add support for <optgroup>s
+3. Would be nice to add support for ```optgroup```s
