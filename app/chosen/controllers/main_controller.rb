@@ -30,10 +30,8 @@ module Chosen
     # to a framework conflict that was throwing an error.
     # See related issue:
     def index_ready
-      `console.log($(#{selector}));`
       options = attrs.chosen_options || {}
       options[:width] ||= "100%"
-      `console.log(#{options.to_n});`
       `$(#{selector}).chosen(#{options.to_n}).change(function(e, params) {
         e.stopPropagation();
         $(".my_select_box").trigger('chosen:change', params);
