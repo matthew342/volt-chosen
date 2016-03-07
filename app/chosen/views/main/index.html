@@ -1,0 +1,34 @@
+<:Body>
+  <div e-="log_result" class="form-group {{ if errors }}has-error{{ elsif marked }}has-success{{ end }} has-feedback">
+    {{ if label }}
+      <label class="control-label">{{ label }}</label>
+    {{ end }}
+    <select multiple="{{ attrs.multiple }}" value="{{ attrs.value }}" e-change="blur" class="chosen-select {{ unique_klass }} form-control">
+      {{ if attrs.value.nil? }}
+        <option value="" selected>
+        </option>
+      {{ end }}
+      {{ options.each do |option| }}
+        {{ if selected(option[:value]) }}
+          <option value="{{ option[:value] }}" selected>
+            {{ option[:label] }}
+            <!-- This is an ugly hack to get chosen to update with the selection -->
+            {{ update_chosen }}
+          </option>
+        {{ else }}
+          <option value="{{ option[:value] }}">
+            {{ option[:label] }}
+          </option>
+        {{ end }}
+      {{ end }}
+    </select>
+    {{ if attrs.help_text }}
+      <span class="help-block">{{ raw(attrs.help_text) }}</span>
+    {{ end }}
+    {{ if errors }}
+      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      <span class="control-label errors">{{ (errors || []).join(', ') }}</span>
+    {{ elsif marked }}
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    {{ end }}
+  </div>
