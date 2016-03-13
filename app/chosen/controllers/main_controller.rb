@@ -10,20 +10,19 @@ module Chosen
     reactive_accessor :options
 
     def setup_field
-      # Default to text fields
-      if attrs.respond_to?(:type)
-        @type = attrs.type
-      else
-        @type = 'text'
-      end
-
       unless attrs.value_last_method
         field_type = self.class.to_s.underscore.gsub(/[_]Controller$/, '')
-        raise "a <:fields:#{field_type} tag was used without passing a value attribute"
+        raise "a <:chosen tag was used without passing a value attribute"
       end
 
       # Get the name of the field by looking at the method scope
       @field_name = attrs.value_last_method.gsub(/^[_]/, '')
+    end
+
+    # Set the model to attrs.options so that we don't render the view until
+    # the promise passed to attrs.options resolves.
+    def index
+      self.model = attrs.options
     end
 
     # Currently catches the 'change' event and re-raises it as chosen:changed due
