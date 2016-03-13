@@ -7,8 +7,6 @@ module Chosen
   class MainController < Volt::ModelController
     before_action :setup_field
 
-    reactive_accessor :options
-
     def setup_field
       unless attrs.value_last_method
         field_type = self.class.to_s.underscore.gsub(/[_]Controller$/, '')
@@ -35,7 +33,6 @@ module Chosen
         e.stopPropagation();
         $(".my_select_box").trigger('chosen:change', params);
       });`
-
     end
 
     def before_index_remove
@@ -107,7 +104,7 @@ module Chosen
     end
 
     def selected(value)
-      if attrs.multiple
+      if attrs.multiple == true || attrs.multiple == 'true'
         if attrs.value.include?(value)
           res = true
         else
